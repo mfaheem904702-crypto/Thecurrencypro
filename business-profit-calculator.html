@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="Muhammad Faheem">
+<title>Business Profit & Margin Calculator Pakistan – Free Gross & Net Profit Tool</title>
+<meta name="description" content="Free business profit and margin calculator for Pakistani businesses. Calculate gross profit, net profit, and profit margin percentage instantly, plus learn how to read your numbers."> 
+<link rel="canonical" href="https://www.thecurrencypro.com/calculators/business-profit-calculator.html">
+<meta property="og:title" content="Business Profit & Margin Calculator – TheCurrencyPro">
+<meta property="og:description" content="Calculate gross profit, net profit, and margin percentage for your business in seconds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.thecurrencypro.com/calculators/business-profit-calculator.html">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="../style.css?v=10">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between gross profit and net profit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gross profit is revenue minus the direct cost of goods sold (COGS). Net profit goes a step further and subtracts operating expenses, such as rent, salaries, and utilities, from gross profit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good profit margin for a small business in Pakistan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It varies widely by industry. Retail and trading businesses often run on thinner margins of 5-15%, while service-based businesses can see 20-40% or higher, since they typically have lower cost of goods sold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is net profit margin calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Net profit margin is calculated as (Net Profit divided by Total Revenue) multiplied by 100, expressed as a percentage."
+      }
+    }
+  ]
+}
+</script>
+<style>
+.conv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .conv-row {
+    grid-template-columns: 1fr;
+  }
+}
+.faq-q {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-a {
+  display: none;
+  padding: 10px 0;
+  color: var(--text2, #aaa);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-a {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38" loading="eager">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="/">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: clamp(22px, 4vw, 32px); margin-bottom: 10px;">Business Profit & Margin Calculator</h1>
+    <p style="color: var(--text2, #888); font-size: 14px; margin-bottom: 24px;">Work out your gross profit, net profit, and profit margin percentage in seconds — built for Pakistani small business owners tracking monthly performance.</p>
+
+    <div class="converter-card">
+      <div class="conv-row">
+        <div>
+          <label class="field-label" for="bizRevenue">Total Revenue / Sales (PKR)</label>
+          <input type="number" id="bizRevenue" placeholder="e.g. 500000" value="500000">
+        </div>
+        <div>
+          <label class="field-label" for="bizCogs">Cost of Goods Sold (COGS)</label>
+          <input type="number" id="bizCogs" placeholder="e.g. 250000" value="250000">
+        </div>
+      </div>
+      <div class="conv-row" style="margin-top:12px; grid-template-columns: 1fr;">
+        <div>
+          <label class="field-label" for="bizExpenses">Operating Expenses (rent, salaries, utilities, etc.)</label>
+          <input type="number" id="bizExpenses" placeholder="e.g. 100000" value="100000">
+        </div>
+      </div>
+      <button class="btn-convert" style="width:100%; margin-top:20px;" onclick="calcProfit()">Calculate Net Profit</button>
+      <div class="result-box" style="margin-top:20px; text-align:center;">
+        <div class="result-amount" id="profitResult" style="font-size:1.4rem; font-weight:700;">Net Profit: Rs. 150,000</div>
+        <div class="result-note" id="profitMargin" style="color:var(--text2, #aaa); margin-top:6px;">Gross Profit: Rs. 250,000 | Net Margin: 30.00%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPLANATORY CONTENT -->
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box" style="margin-top: 32px;">
+      <h2>Understanding Gross Profit vs. Net Profit</h2>
+      <p>Two numbers get confused constantly by new business owners: gross profit and net profit. They measure different things, and mixing them up can make a business look healthier — or worse — than it really is.</p>
+      <p><strong>Gross profit</strong> is what's left after you subtract the direct cost of producing or buying what you sold (your Cost of Goods Sold, or COGS) from your total revenue. If you run a shop and buy stock for Rs. 250,000 that you sell for Rs. 500,000, your gross profit is Rs. 250,000. This number tells you whether your core buying-and-selling activity is profitable before anything else is considered.</p>
+      <p><strong>Net profit</strong> goes further. It subtracts everything else it costs to keep the business running — shop rent, staff salaries, electricity, marketing, loan interest — from that gross profit figure. Net profit is the number that actually tells you whether the business as a whole made money in a given period, not just the buying-and-selling part of it.</p>
+
+      <h3>Why Profit Margin Percentage Matters More Than the Rupee Amount</h3>
+      <p>A business making Rs. 200,000 net profit sounds identical whether it did Rs. 1,000,000 or Rs. 10,000,000 in sales — but those are very different businesses. The first has a 20% net margin, the second has a 2% margin. Margin percentage is what lets you compare performance month to month, or compare your business against others in the same industry, regardless of scale.</p>
+
+      <h3>Typical Margin Ranges in Pakistani Businesses</h3>
+      <p>Margins vary sharply by sector, and there's no single "correct" number — but a few rough benchmarks help with context:</p>
+      <ul>
+        <li><strong>Retail and general trading:</strong> often 5-15% net margin, since goods are bought and resold with relatively thin markups.</li>
+        <li><strong>Restaurants and food service:</strong> typically 8-15%, with food cost and staff wages as the main pressure points.</li>
+        <li><strong>Services (consulting, agencies, freelancing):</strong> often 20-40% or higher, since there's little to no cost of goods sold — the main expense is time and salaries.</li>
+        <li><strong>Manufacturing:</strong> commonly 10-20%, depending on raw material costs and production efficiency.</li>
+      </ul>
+      <p>If your margin sits well below the typical range for your sector, it's usually a sign to review either your pricing or your cost structure before scaling up — growing a low-margin business often just means bigger losses at a larger scale.</p>
+
+      <h3>A Practical Way to Use This Calculator Monthly</h3>
+      <p>Many small business owners in Pakistan track revenue and rough expenses in their head or in a notebook, without ever converting them into a margin percentage. Running your numbers through a calculator like this one at the end of each month takes a few minutes and gives you a comparable figure you can track over time — a far more useful signal than watching the bank balance alone, since bank balance is affected by timing of payments and doesn't reflect actual profitability.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-gold" aria-hidden="true">❓</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the difference between gross profit and net profit? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Gross profit is revenue minus the direct cost of goods sold. Net profit subtracts operating expenses like rent, salaries, and utilities from that gross profit figure as well.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is a good profit margin for a small business in Pakistan? <span class="faq-icon">+</span></div>
+        <div class="faq-a">It depends heavily on industry. Retail and trading often run 5-15%, while service-based businesses can see 20-40% or more due to lower direct costs.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How is net profit margin calculated? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Net profit margin equals net profit divided by total revenue, multiplied by 100 to get a percentage.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="/">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="../calculators/">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> This calculator is for general informational and estimation purposes only and does not constitute financial or accounting advice. Consult a qualified accountant for formal financial statements and tax filings.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+function calcProfit() {
+  const revenue = parseFloat(document.getElementById('bizRevenue').value) || 0;
+  const cogs = parseFloat(document.getElementById('bizCogs').value) || 0;
+  const expenses = parseFloat(document.getElementById('bizExpenses').value) || 0;
+  const grossProfit = revenue - cogs;
+  const netProfit = grossProfit - expenses;
+  const margin = revenue > 0 ? ((netProfit / revenue) * 100) : 0;
+  
+  document.getElementById('profitResult').innerText = "Net Profit: Rs. " + netProfit.toLocaleString(undefined, {maximumFractionDigits:0});
+  document.getElementById('profitMargin').innerText = "Gross Profit: Rs. " + grossProfit.toLocaleString(undefined, {maximumFractionDigits:0}) + " | Net Margin: " + margin.toFixed(2) + "%";
+}
+
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+  const icon = element.querySelector('.faq-icon');
+  if (icon) {
+    icon.textContent = item.classList.contains('active') ? '-' : '+';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  calcProfit();
+});
+</script>
+</body>
+</html>

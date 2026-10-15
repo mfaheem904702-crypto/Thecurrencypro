@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Muhammad Faheem">
+<title>Free Financial Calculators Pakistan – Tax, Loan, Zakat & Gold Tools</title>
+<meta name="description" content="Free financial calculators built for Pakistan: salary tax, freelancer tax, loan EMI, Zakat, gold price, inflation, business profit, and travel budget tools, all in one place.">
+<link rel="canonical" href="https://www.thecurrencypro.com/calculators/">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="../style.css?v=10">
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="./">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="section-wrap" style="max-width: 1000px; margin: 0 auto;">
+    <h1 style="font-size: clamp(24px, 4vw, 34px); margin-bottom: 10px;">Free Financial Calculators for Pakistan</h1>
+    <p style="color: var(--text2); font-size: 15px; max-width: 640px; margin-bottom: 32px;">Nine tools built specifically around Pakistan's tax slabs, Sarafa gold units, and financial conditions — no sign-up required, all calculations run instantly in your browser.</p>
+
+    <div class="cat-grid">
+      <a href="inflation-calculator.html" class="cat-card"><span class="cat-emoji">📈</span>Inflation Calculator</a>
+      <a href="salary-tax-calculator.html" class="cat-card"><span class="cat-emoji">💵</span>Salary Tax Calculator</a>
+      <a href="loan-emi-calculator.html" class="cat-card"><span class="cat-emoji">🏦</span>Loan EMI Calculator</a>
+      <a href="currency-strength-meter.html" class="cat-card"><span class="cat-emoji">💪</span>Currency Comparison</a>
+      <a href="business-profit-calculator.html" class="cat-card"><span class="cat-emoji">📊</span>Business Profit Calculator</a>
+      <a href="travel-budget-calculator.html" class="cat-card"><span class="cat-emoji">✈️</span>Travel Budget Calculator</a>
+      <a href="zakat-calculator.html" class="cat-card"><span class="cat-emoji">🌙</span>Zakat Calculator</a>
+      <a href="gold-calculator.html" class="cat-card"><span class="cat-emoji">🪙</span>Gold Price Calculator</a>
+      <a href="freelancer-tax-calculator.html" class="cat-card"><span class="cat-emoji">💻</span>Freelancer Tax Calculator</a>
+    </div>
+  </div>
+
+  <!-- WHAT EACH TOOL DOES -->
+  <div class="section-wrap" style="max-width: 1000px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-cyan" aria-hidden="true">🧮</div>
+      <h2>What Each Calculator Does</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-cyan">📈</div><h3 class="ic-title">Inflation Calculator</h3></div>
+        <div class="ic-body"><p>Shows the real, inflation-adjusted value of a fixed amount of money after a chosen number of years — useful for judging whether savings are actually keeping pace with rising prices.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-purple">💵</div><h3 class="ic-title">Salary Tax Calculator</h3></div>
+        <div class="ic-body"><p>Estimates monthly income tax and take-home pay from a gross salary using Pakistan's slab-based FBR tax structure.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-cyan">🏦</div><h3 class="ic-title">Loan EMI Calculator</h3></div>
+        <div class="ic-body"><p>Calculates monthly loan installments plus total interest paid across the loan's life, for bank loans and mortgages.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-orange">💪</div><h3 class="ic-title">Currency Comparison</h3></div>
+        <div class="ic-body"><p>Compares live exchange rates of major currencies against the Rupee, pulled from real-time market data — not a fabricated sentiment score.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-green">📊</div><h3 class="ic-title">Business Profit Calculator</h3></div>
+        <div class="ic-body"><p>Breaks down gross profit, net profit, and profit margin percentage from revenue, cost of goods, and operating expenses.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-pink">✈️</div><h3 class="ic-title">Travel Budget Calculator</h3></div>
+        <div class="ic-body"><p>Adds up flights, hotels, and daily expenses for an international trip, converting the total to USD using a live exchange rate.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-gold">🌙</div><h3 class="ic-title">Zakat Calculator</h3></div>
+        <div class="ic-body"><p>Calculates Zakat liability at 2.5% across cash, gold, silver, and business assets, after deducting short-term debts.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-gold">🪙</div><h3 class="ic-title">Gold Price Calculator</h3></div>
+        <div class="ic-body"><p>Converts gold prices across Tola, Gram, and Masha weight units, and between 24K, 22K, 21K, and 18K purity levels.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="ic-header"><div class="ic-icon sh-purple">💻</div><h3 class="ic-title">Freelancer Tax Calculator</h3></div>
+        <div class="ic-body"><p>Estimates FBR withholding tax on foreign freelance income, comparing PSEB-registered and non-registered rates.</p></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="./">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+</body>
+</html>

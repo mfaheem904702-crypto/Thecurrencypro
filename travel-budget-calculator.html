@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Muhammad Faheem">
+<title>International Travel Budget Calculator Pakistan – TheCurrencyPro</title>
+<meta name="description" content="Estimate your total international trip budget including flights, hotels, and daily expenses, converted to USD using live exchange rates.">
+<link rel="canonical" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl4calculators/travel-budget-calculator.html">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="../style.css?v=10">
+<style>
+.conv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+@media (max-width: 600px) {
+  .conv-row {
+    grid-template-columns: 1fr;
+  }
+}
+.ic-list {
+  margin: 12px 0 16px 20px;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: clamp(22px, 4vw, 32px); margin-bottom: 10px;">Travel Budget Calculator</h1>
+    <p style="color: var(--text2, #aaa); font-size: 14px; margin-bottom: 24px;">Estimate total trip expenses including flights, hotels, and daily costs — converted to USD using a live exchange rate.</p>
+
+    <div class="converter-card">
+      <div class="conv-row">
+        <div>
+          <label class="field-label" for="trvFlight">Flight Tickets Total (PKR)</label>
+          <input type="number" id="trvFlight" placeholder="e.g. 200000" value="200000" oninput="calcTravel()">
+        </div>
+        <div>
+          <label class="field-label" for="trvHotel">Hotel Expense / Night (PKR)</label>
+          <input type="number" id="trvHotel" placeholder="e.g. 25000" value="25000" oninput="calcTravel()">
+        </div>
+      </div>
+      <div class="conv-row" style="margin-top:12px;">
+        <div>
+          <label class="field-label" for="trvDaily">Daily Food & Shopping (PKR)</label>
+          <input type="number" id="trvDaily" placeholder="e.g. 15000" value="15000" oninput="calcTravel()">
+        </div>
+        <div>
+          <label class="field-label" for="trvDays">Trip Duration (Days)</label>
+          <input type="number" id="trvDays" placeholder="e.g. 7" value="7" oninput="calcTravel()">
+        </div>
+      </div>
+      <button class="btn-convert" style="width:100%; margin-top:20px;" onclick="calcTravel()">Calculate Total Trip Budget</button>
+      <div class="result-box" style="margin-top: 20px;">
+        <div class="result-amount" id="travelResult">Click Calculate</div>
+        <div class="result-note" id="travelUsd">USD Equivalent</div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box" style="margin-top: 32px;">
+      <h2>Planning a Realistic International Travel Budget</h2>
+      <p>Most travel budget surprises come from underestimating daily incidental spending — food, local transport, small purchases — rather than the big-ticket items like flights and hotels, which are usually booked and known in advance. Building a daily estimate that's slightly generous, then multiplying it by trip length, tends to give a more realistic total than assuming the bare minimum.</p>
+
+      <h3>Why the USD Conversion Uses a Live Rate</h3>
+      <p>The Rupee-to-Dollar rate moves daily, sometimes by a meaningful amount over the course of a multi-week trip-planning period. This calculator pulls the current live exchange rate each time you load the page, rather than relying on a fixed number that would quickly become outdated — so the USD equivalent shown reflects today's actual market rate, not a rate from whenever the page was last updated.</p>
+
+      <h3>Costs This Calculator Doesn't Include</h3>
+      <ul class="ic-list">
+        <li>Visa fees, which vary significantly by destination country</li>
+        <li>Travel insurance</li>
+        <li>Airport transfers and local intercity transport beyond daily spending money</li>
+        <li>Currency exchange margins — banks and exchange companies typically don't offer the exact interbank rate shown here</li>
+      </ul>
+      <p>Building in a buffer of 10-15% on top of this calculator's total is a reasonable practice for unexpected costs that come up on most trips.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="./">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl6profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> USD conversion uses a live indicative rate for estimation only. Actual bank or exchange company rates will differ slightly.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+let liveUsdRate = null;
+
+async function fetchLiveUsdRate() {
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    const data = await res.json();
+    liveUsdRate = data?.rates?.PKR || null;
+  } catch (e) {
+    liveUsdRate = null;
+  }
+}
+
+function calcTravel() {
+  const flight = parseFloat(document.getElementById('trvFlight').value) || 0;
+  const hotelPerNight = parseFloat(document.getElementById('trvHotel').value) || 0;
+  const dailyExp = parseFloat(document.getElementById('trvDaily').value) || 0;
+  const days = parseFloat(document.getElementById('trvDays').value) || 0;
+  
+  const totalHotel = hotelPerNight * days;
+  const totalDaily = dailyExp * days;
+  const grandTotalPkr = flight + totalHotel + totalDaily;
+
+  document.getElementById('travelResult').innerText = "Total Budget: Rs. " + Math.round(grandTotalPkr).toLocaleString('en-PK');
+
+  if (liveUsdRate) {
+    const approxUsd = grandTotalPkr / liveUsdRate;
+    document.getElementById('travelUsd').innerText = "Approximate Cost in USD: $" + Math.round(approxUsd).toLocaleString('en-US') + " (at rate: " + liveUsdRate.toFixed(2) + " PKR/USD)";
+  } else {
+    document.getElementById('travelUsd').innerText = "USD equivalent unavailable — live rate could not be fetched.";
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+async function initCalculator() {
+  calcTravel();
+  await fetchLiveUsdRate();
+  calcTravel();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCalculator);
+} else {
+  initCalculator();
+}
+</script>
+</body>
+</html>

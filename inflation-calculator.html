@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Muhammad Faheem">
+<title>Pakistan Inflation Calculator – Calculate Purchasing Power Loss</title>
+<meta name="description" content="Calculate how inflation in Pakistan erodes the purchasing power of your money over time. See the real value of your savings in future years.">
+<link rel="canonical" href="https://www.instagram.com/brandedlux2025/calculators/inflation-calculator.html">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="../style.css?v=10">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does inflation affect purchasing power?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inflation reduces how much a fixed amount of money can buy over time. If inflation runs at 10% a year, money that isn't earning at least that much in returns loses real value every year, even though the number in the bank account stays the same."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What has Pakistan's inflation rate typically looked like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pakistan's inflation rate has fluctuated significantly across different years, at times running in the single digits and at other times reaching well into double digits during periods of currency depreciation or import price shocks. For the current official rate, check the latest release from the Pakistan Bureau of Statistics."
+      }
+    }
+  ]
+}
+</script>
+<style>
+.conv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+@media (max-width: 600px) {
+  .conv-row {
+    grid-template-columns: 1fr;
+  }
+}
+.faq-q {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-a {
+  display: none;
+  padding: 10px 0;
+  color: var(--text2, #aaa);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-a {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: clamp(22px, 4vw, 32px); margin-bottom: 10px;">Pakistan Inflation Calculator</h1>
+    <p style="color: var(--text2, #aaa); font-size: 14px; margin-bottom: 24px;">See how inflation quietly erodes the real value of your savings, even while the number in your account stays the same.</p>
+
+    <div class="converter-card">
+      <div class="conv-row">
+        <div>
+          <label class="field-label" for="infAmount">Amount (PKR)</label>
+          <input type="number" id="infAmount" placeholder="e.g. 100000" value="100000" oninput="calcInflation()">
+        </div>
+        <div>
+          <label class="field-label" for="infRate">Annual Inflation Rate (%)</label>
+          <input type="number" id="infRate" placeholder="e.g. 12" value="12" oninput="calcInflation()">
+        </div>
+      </div>
+      <div class="conv-row" style="margin-top:12px; grid-template-columns: 1fr;">
+        <div>
+          <label class="field-label" for="infYears">Time Period (Years)</label>
+          <input type="number" id="infYears" placeholder="e.g. 3" value="3" oninput="calcInflation()">
+        </div>
+      </div>
+      <button class="btn-convert" style="width:100%; margin-top:20px;" onclick="calcInflation()">Calculate Future Value</button>
+      <div class="result-box" style="margin-top: 20px;">
+        <div class="result-amount" id="infResult">Click Calculate</div>
+        <div class="result-note" id="infDetail">See purchasing power impact</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box" style="margin-top: 32px;">
+      <h2>Why Money Sitting Idle Loses Value</h2>
+      <p>A common mistake is assuming that money kept in a low-interest or non-interest bank account is "safe" simply because the number never goes down. In real terms, it isn't safe at all — inflation steadily reduces what that money can actually buy, even while the balance stays fixed or grows only slightly.</p>
+      <p>This calculator shows the <strong>real value</strong> of a fixed amount of money after a chosen number of years at a given inflation rate — in other words, what that same amount would be worth in today's purchasing power terms, not in future nominal Rupees.</p>
+
+      <h3>How This Plays Out in Pakistan</h3>
+      <p>Pakistan has experienced periods of both moderate and quite high inflation across different years, often tied to currency depreciation, import costs (especially energy and fuel), and domestic supply conditions. Because these swings can be significant year to year, it's worth checking the latest inflation figure from the Pakistan Bureau of Statistics or the State Bank rather than assuming a fixed long-term average when planning multi-year savings.</p>
+
+      <h3>What This Means for Savings Decisions</h3>
+      <p>If your savings account pays 8% annual interest but inflation runs at 12%, you are losing roughly 4% of real value every year — even though your balance is technically growing. This is why financial planning conversations in high-inflation environments often focus on <em>real return</em> (return minus inflation) rather than the nominal interest rate alone. Assets like gold, real estate, or foreign currency savings are sometimes used as partial inflation hedges, each with its own risks and trade-offs worth researching separately.</p>
+
+      <h3>Using This Calculator Practically</h3>
+      <p>Try running a few different inflation-rate scenarios (say, 8%, 12%, and 18%) over the number of years you're planning for — a wedding fund, a home deposit, retirement savings — to get a realistic range for how much purchasing power you'll actually need to plan around, rather than relying on a single assumption.</p>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-orange" aria-hidden="true">❓</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How does inflation affect purchasing power? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Inflation reduces how much a fixed amount of money can buy over time — if it isn't earning returns above the inflation rate, its real value falls every year even as the balance stays the same.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What has Pakistan's inflation rate typically looked like? <span class="faq-icon">+</span></div>
+        <div class="faq-a">It has fluctuated significantly across different years. For the current official rate, check the latest release from the Pakistan Bureau of Statistics.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="../calculators/">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl4profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> This calculator is for general educational and estimation purposes only and does not constitute financial advice.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+function calcInflation() {
+  const amount = parseFloat(document.getElementById('infAmount').value) || 0;
+  const rate = parseFloat(document.getElementById('infRate').value) || 0;
+  const years = parseFloat(document.getElementById('infYears').value) || 0;
+  
+  const futureValue = amount / Math.pow((1 + (rate / 100)), years);
+  const loss = amount - futureValue;
+  
+  document.getElementById('infResult').innerText = "Real Value: Rs. " + Math.round(futureValue).toLocaleString('en-PK');
+  document.getElementById('infDetail').innerText = "In " + years + " years, your money loses Rs. " + Math.round(loss).toLocaleString('en-PK') + " in purchasing power.";
+}
+
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+  const icon = element.querySelector('.faq-icon');
+  if (icon) {
+    icon.textContent = item.classList.contains('active') ? '-' : '+';
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calcInflation);
+} else {
+  calcInflation();
+}
+</script>
+</body>
+</html>

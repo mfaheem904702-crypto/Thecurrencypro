@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Methodology & Exchange Rate Calculations – TheCurrencyPro</title>
+<meta name="description" content="Learn how TheCurrencyPro collects, processes, and verifies real-time exchange rates, gold prices, and financial data via banking APIs.">
+<link rel="stylesheet" href="style.css?v=9">
+<link rel="canonical" href="url?id=10methodology.html">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <img src="logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="currency-rates.html">Rates</a>
+      <a href="calculators/">Calculators</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="section-wrap">
+  <div class="hero" style="text-align:left; padding: 20px 0;">
+    <h1>Data Methodology & Rate Verification Process</h1>
+    <p class="hero-sub">Transparency in how we fetch, aggregate, and display global exchange rates and financial metrics.</p>
+  </div>
+
+  <div class="content-box">
+    <h2>1. Primary Data Sources</h2>
+    <p>TheCurrencyPro utilizes direct REST API integrations with institutional and open-access financial market providers, primarily <code>open.er-api.com</code> and secondary institutional forex aggregators. Our market rates reflect interbank reference benchmarks used internationally.</p>
+
+    <h2>2. How Our Currency API Pipeline Works</h2>
+    <p>When a user opens or interacts with our currency conversion tool, the following pipeline executes:</p>
+    <ul>
+      <li><strong>API Request:</strong> A secured JSON request is dispatched to our data provider endpoint.</li>
+      <li><strong>Parsing & Validation:</strong> Incoming exchange rate values are validated to eliminate anomalous spikes or corrupted payloads.</li>
+      <li><strong>Client-Side Processing:</strong> JavaScript computes precise conversion factors instantly without sending user data to third-party servers.</li>
+    </ul>
+
+    <h2>3. Rate Update Frequencies</h2>
+    <p>To provide high performance without introducing lag, our data refresh schedules are structured as follows:</p>
+    <ul>
+      <li><strong>Interbank & Major Forex Pairs (USD, EUR, GBP):</strong> Updated continuously in real-time throughout global market trading sessions.</li>
+      <li><strong>Regional & Open Market Benchmark Display:</strong> Refreshed hourly during active trading windows (Asia, Europe, New York).</li>
+      <li><strong>Gold & Precious Metals Data:</strong> Updated daily in alignment with Sarafa Market disclosures and global spot prices.</li>
+    </ul>
+
+    <h2>4. Accuracy & Limitations Disclaimer</h2>
+    <p>While our rates reflect reliable live wholesale interbank benchmarks, actual retail transactions at local currency exchange counters, commercial banks, or credit card providers may include spread margins or administrative fees.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="copyright">© 2026 TheCurrencyPro · Data Methodology Policy</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="last-modified" content="2026-07-23">
+<meta name="robots" content="index, follow">
+<meta name="language" content="en">
+<meta name="author" content="Muhammad Faheem">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#060b14">
+
+<title>Zakat Calculator – Calculate Zakat on Cash, Gold & Assets in Pakistan</title>
+<meta name="description" content="Free Zakat Calculator for Pakistan. Easily calculate your payable Zakat (2.5%) on cash, bank balance, gold, silver, investments, and business assets in PKR.">
+<meta name="keywords" content="Zakat Calculator Pakistan, calculate zakat online, zakat on gold, nisab rate Pakistan 2026, zakat on cash">
+<link rel="canonical" href="https://www.google.com/imghp?hl=en&tab=ri&ogbl3calculators/zakat-calculator.html">
+
+<link rel="stylesheet" href="../style.css?v=10">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=G-VEK9X4C984" defer></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VEK9X4C984');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is Zakat calculated in Pakistan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zakat is calculated as 2.5% of a Muslim's total net wealth — cash, bank balances, gold, silver, and liquid business assets — that has stayed above the Nisab threshold for one full lunar year, after subtracting immediate debts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Nisab threshold for Zakat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The gold Nisab is 7.5 Tolas (approximately 87.48 grams), and the silver Nisab is 52.5 Tolas (approximately 612.36 grams). Many scholars recommend using the silver Nisab value since it is lower, making Zakat obligatory on a wider base of wealth and benefiting more recipients."
+      }
+    }
+  ]
+}
+</script>
+<style>
+.converter-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.faq-q {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-a {
+  display: none;
+  padding: 10px 0;
+  color: var(--text2, #aaa);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-a {
+  display: block;
+}
+.ic-list {
+  margin: 12px 0 16px 20px;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="hero" style="text-align: center; margin-bottom: 24px;">
+    <div class="hero-badge">🌙 Islamic Financial Tool</div>
+    <h1 style="font-size: clamp(22px, 4vw, 32px); margin: 10px 0;">Zakat Calculator Pakistan</h1>
+    <p class="hero-sub" style="color: var(--text2, #aaa); font-size: 14px;">Calculate your exact Zakat liability (2.5%) across cash, gold, silver, and business investments instantly.</p>
+  </section>
+
+  <div class="converter-section">
+    <div class="converter-card" style="max-width: 650px; margin: 0 auto;">
+      <div class="converter-title" style="font-size: 1.2rem; font-weight: 600; margin-bottom: 20px;">🌙 Zakat Liability Calculation</div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="cash">Cash in Hand &amp; Bank Accounts (PKR)</label>
+        <input type="number" id="cash" placeholder="e.g. 500000" min="0" oninput="calculateZakat()">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="goldValue">Value of Gold Owned (PKR)</label>
+        <input type="number" id="goldValue" placeholder="e.g. 250000" min="0" oninput="calculateZakat()">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="silverValue">Value of Silver Owned (PKR)</label>
+        <input type="number" id="silverValue" placeholder="e.g. 50000" min="0" oninput="calculateZakat()">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="investments">Investments, Stocks &amp; Business Goods (PKR)</label>
+        <input type="number" id="investments" placeholder="e.g. 300000" min="0" oninput="calculateZakat()">
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="debts">Deduct Immediate Liabilities / Debts (PKR)</label>
+        <input type="number" id="debts" placeholder="e.g. 100000" min="0" oninput="calculateZakat()">
+      </div>
+
+      <div class="result-box" style="margin-top: 20px;">
+        <div class="result-note">Total Net Wealth Eligible for Zakat</div>
+        <div class="result-amount" id="netWealth" style="font-size: 1.4rem; margin-bottom: 10px;">Rs. 0</div>
+        <div class="result-note">Total Payable Zakat (2.5%)</div>
+        <div class="result-amount" id="zakatAmount" style="color: #4caf50;">Rs. 0</div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box" style="margin-top: 32px;">
+      <h2>Understanding Zakat on Modern Assets</h2>
+      <p>Zakat is one of the Five Pillars of Islam — an obligatory annual payment of 2.5% on wealth that has remained above the Nisab threshold for a full lunar (Hijri) year. While the concept is centuries old, applying it to modern financial life — bank accounts, stock portfolios, business inventory — sometimes needs a bit of clarification.</p>
+
+      <h3>What Counts Toward Zakatable Wealth</h3>
+      <ul class="ic-list">
+        <li><strong>Cash and bank balances:</strong> savings accounts, current accounts, and cash on hand all count in full.</li>
+        <li><strong>Gold and silver:</strong> jewellery held as an investment or beyond personal use is included at current market value, though there is scholarly difference of opinion on jewellery worn regularly for personal use.</li>
+        <li><strong>Business inventory and stock:</strong> goods held for trade are valued at their current market price, not their original purchase cost.</li>
+        <li><strong>Investments and shares:</strong> the market value of shares held for trading purposes is generally Zakatable; shares held long-term for dividends may be assessed differently depending on the underlying business assets.</li>
+      </ul>
+
+      <h3>What Can Be Deducted</h3>
+      <p>Short-term debts and immediate liabilities — money you owe that is due imminently — can be subtracted from your total wealth before calculating Zakat. Long-term liabilities like a multi-year mortgage are typically only deducted for the portion due within the coming year, according to most contemporary scholarly guidance, though practices vary between schools of thought.</p>
+
+      <h3>Why the Nisab Threshold Matters</h3>
+      <p>Zakat only becomes obligatory once total wealth exceeds the Nisab — the minimum threshold, traditionally defined as either 7.5 Tolas of gold or 52.5 Tolas of silver. Since gold and silver prices move independently, using the silver-based Nisab (which is almost always the lower value) means more people fall into the obligatory range, which many scholars view as the more cautious and charity-favoring approach.</p>
+
+      <h3>A Note on Precision</h3>
+      <p>This calculator provides a straightforward 2.5% calculation on the net wealth you enter. For complex cases — mixed business partnerships, agricultural Zakat (which follows different rules), or unclear debt situations — it's worth consulting a knowledgeable scholar or Islamic finance advisor for a precise ruling specific to your situation.</p>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="info-card" style="margin-top: 24px;">
+      <div class="ic-header" style="display: flex; align-items: center; gap: 10px;">
+        <div class="ic-icon sh-gold">💡</div>
+        <h3 class="ic-title" style="margin: 0;">How Zakat is Calculated — Quick Reference</h3>
+      </div>
+      <div class="ic-body" style="margin-top: 10px;">
+        <p>Zakat is an obligatory charity in Islam calculated at <strong>2.5%</strong> of a Muslim's total cumulative wealth that stays above the <em>Nisab</em> threshold for one full lunar year.</p>
+        <ul class="ic-list">
+          <li><strong>Gold Nisab:</strong> 7.5 Tolas (approx. 87.48 grams)</li>
+          <li><strong>Silver Nisab:</strong> 52.5 Tolas (approx. 612.36 grams)</li>
+          <li>Net wealth is calculated by adding all cash, bank balance, gold, silver, and liquid trade assets, then subtracting short-term debts.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-gold" aria-hidden="true">❓</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How is Zakat calculated in Pakistan? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Zakat equals 2.5% of net wealth — cash, gold, silver, and liquid business assets minus immediate debts — held above the Nisab threshold for one lunar year.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the Nisab threshold for Zakat? <span class="faq-icon">+</span></div>
+        <div class="faq-a">7.5 Tolas of gold (about 87.48 grams) or 52.5 Tolas of silver (about 612.36 grams). Many scholars prefer the silver value since it is lower.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="./">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> This calculator provides a general estimate and does not constitute a religious ruling (fatwa). For complex situations, consult a qualified Islamic scholar.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+function calculateZakat() {
+  const cash = parseFloat(document.getElementById('cash').value) || 0;
+  const gold = parseFloat(document.getElementById('goldValue').value) || 0;
+  const silver = parseFloat(document.getElementById('silverValue').value) || 0;
+  const investments = parseFloat(document.getElementById('investments').value) || 0;
+  const debts = parseFloat(document.getElementById('debts').value) || 0;
+
+  let totalWealth = (cash + gold + silver + investments) - debts;
+  if (totalWealth < 0) totalWealth = 0;
+
+  const zakat = totalWealth * 0.025;
+
+  document.getElementById('netWealth').innerText = 'Rs. ' + Math.round(totalWealth).toLocaleString('en-PK');
+  document.getElementById('zakatAmount').innerText = 'Rs. ' + Math.round(zakat).toLocaleString('en-PK');
+}
+
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+  const icon = element.querySelector('.faq-icon');
+  if (icon) {
+    icon.textContent = item.classList.contains('active') ? '-' : '+';
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calculateZakat);
+} else {
+  calculateZakat();
+}
+</script>
+</body>
+</html>

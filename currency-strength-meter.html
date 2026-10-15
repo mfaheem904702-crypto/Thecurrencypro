@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="last-modified" content="2026-07-23">
+<meta name="robots" content="index, follow">
+<meta name="language" content="en">
+<meta name="author" content="Muhammad Faheem">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#060b14">
+
+<title>Live Currency Value Comparison vs PKR – TheCurrencyPro</title>
+<meta name="description" content="Compare live exchange rates of major world currencies against the Pakistani Rupee, sourced from real-time market data.">
+<link rel="canonical" href="https://www.thecurrencypro.com/calculators/currency-strength-meter.html">
+
+<link rel="stylesheet" href="../style.css?v=10">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=G-VEK9X4C984" defer></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VEK9X4C984');
+</script>
+
+<style>
+  .meter-bar { height: 12px; background: var(--border, #2a3447); border-radius: 6px; overflow: hidden; margin-top: 6px; }
+  .meter-fill { height: 100%; width: 0%; transition: width 0.6s ease-in-out; background: var(--gradient1, linear-gradient(90deg, #10b981, #059669)); }
+  .currency-row { margin-bottom: 16px; padding: 14px; background: var(--card, #111827); border: 1px solid var(--border2, #1f2937); border-radius: 10px; }
+  .currency-row .row-top { display:flex; justify-content:space-between; font-weight:700; color: var(--text, #f9fafb); font-size: 14px; }
+  .currency-row .row-value { font-size: 12px; color: var(--text2, #9ca3af); font-weight: 500; }
+  .ic-list { padding-left: 20px; line-height: 1.7; color: var(--text2, #d1d5db); }
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="hero-badge">📊 Live Market Data</div>
+    <h1>Live Currency Value Comparison vs PKR</h1>
+    <p class="hero-sub">See how many Pakistani Rupees each major currency buys right now, pulled from live exchange rate data.</p>
+  </section>
+
+  <div class="section-wrap" style="max-width: 700px; margin: 0 auto;">
+    <div id="currencyMeterList">
+      <div class="currency-row">
+        <div class="row-top"><span>🇺🇸 USD (US Dollar)</span><span class="row-value">Updating...</span></div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 85%;"></div></div>
+      </div>
+      <div class="currency-row">
+        <div class="row-top"><span>🇪🇺 EUR (Euro)</span><span class="row-value">Updating...</span></div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div>
+      </div>
+      <div class="currency-row">
+        <div class="row-top"><span>🇬🇧 GBP (British Pound)</span><span class="row-value">Updating...</span></div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 100%;"></div></div>
+      </div>
+      <div class="currency-row">
+        <div class="row-top"><span>🇸🇦 SAR (Saudi Riyal)</span><span class="row-value">Updating...</span></div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 25%;"></div></div>
+      </div>
+      <div class="currency-row">
+        <div class="row-top"><span>🇦🇪 AED (UAE Dirham)</span><span class="row-value">Updating...</span></div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 25%;"></div></div>
+      </div>
+      <div class="currency-row">
+        <div class="row-top"><span>🇰🇼 KWD (Kuwaiti Dinar)</span><span class="row-value">Updating...</span></div>
+        <div class="meter-bar"><div class="meter-fill" style="width: 100%;"></div></div>
+      </div>
+    </div>
+    <p style="font-size: 11px; color: var(--text3, #888); text-align:center; margin-top: 8px;">
+      Bars are scaled relative to each other by today's PKR value — they show relative rate size, not a trend, sentiment, or trading signal.
+    </p>
+  </div>
+
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box">
+      <h2>What "Currency Strength" Actually Means</h2>
+      <p>You'll often see currency apps advertise a "strength meter" or "sentiment score" implying a currency is objectively performing well or poorly on a given day. In reality, a currency's exchange rate is just a relative price between two currencies — it doesn't carry a built-in "good" or "bad" label. A currency being worth more PKR per unit isn't the same as it being economically "stronger" in any deeper sense; it mostly reflects historical valuation, not daily momentum.</p>
+      <p>What this page shows instead is straightforward: the live rate of each major currency against the Rupee, pulled from real market data at the moment you load the page, displayed as a simple visual comparison of relative value. If you want to understand actual short-term movement — whether a currency is rising or falling against the Rupee over days or weeks — that requires historical rate tracking, which is a feature we're planning to add with proper charted data rather than an invented score.</p>
+
+      <h3>How to Read the Comparison Responsibly</h3>
+      <ul class="ic-list">
+        <li>A longer bar simply means that currency converts to more Rupees per unit today — it does not predict tomorrow's rate.</li>
+        <li>Rates shown are live interbank-referenced figures and can differ slightly from what a specific bank or exchange company quotes.</li>
+        <li>For any transaction decision, always confirm the exact rate with your bank or exchange dealer at the time of the transaction.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="../calculators/">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> Figures are live indicative rates for informational purposes only and are not a trading or investment signal. Always verify with your bank before transacting.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+const strengthCurrencies = [
+  { code: "USD", name: "US Dollar", flag: "🇺🇸" },
+  { code: "EUR", name: "Euro", flag: "🇪🇺" },
+  { code: "GBP", name: "British Pound", flag: "🇬🇧" },
+  { code: "SAR", name: "Saudi Riyal", flag: "🇸🇦" },
+  { code: "AED", name: "UAE Dirham", flag: "🇦🇪" },
+  { code: "KWD", name: "Kuwaiti Dinar", flag: "🇰🇼" }
+];
+
+async function loadCurrencyComparison() {
+  const container = document.getElementById('currencyMeterList');
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/PKR');
+    const data = await res.json();
+    if (!data?.rates) throw new Error('No rates returned');
+
+    const values = strengthCurrencies.map(c => {
+      const rate = data.rates[c.code];
+      const pkrValue = rate ? (1 / rate) : null;
+      return { ...c, pkrValue };
+    }).filter(c => c.pkrValue !== null);
+
+    const maxVal = Math.max(...values.map(v => v.pkrValue));
+
+    container.innerHTML = values.map(v => {
+      const pct = (v.pkrValue / maxVal) * 100;
+      return `
+        <div class="currency-row">
+          <div class="row-top">
+            <span>${v.flag} ${v.code} (${v.name})</span>
+            <span class="row-value">Rs. ${v.pkrValue.toFixed(2)}</span>
+          </div>
+          <div class="meter-bar"><div class="meter-fill" style="width: ${pct.toFixed(1)}%;"></div></div>
+        </div>
+      `;
+    }).join('');
+  } catch (e) {
+    container.innerHTML = '<p style="text-align:center; color: var(--text3, #888); padding: 12px;">Live rates are temporarily unavailable — please try again shortly.</p>';
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadCurrencyComparison);
+} else {
+  loadCurrencyComparison();
+}
+</script>
+</body>
+</html>

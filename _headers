@@ -1,0 +1,46 @@
+# ============================================================
+# Netlify _headers file for thecurrencypro.com
+# Place this file in the ROOT of your publish folder
+# (same place as index.html). Netlify reads it automatically —
+# no extra configuration needed.
+# ============================================================
+
+# ---- Security headers (fixes "Best Practices" score in PageSpeed) ----
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://s3.tradingview.com https://s.tradingview.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://s3.tradingview.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://open.er-api.com https://www.google-analytics.com https://s3.tradingview.com https://s.tradingview.com wss://*.tradingview.com https://*.tradingview.com; frame-src https://googleads.g.doubleclick.net https://s.tradingview.com https://www.tradingview.com; base-uri 'self'; form-action 'self'
+
+# ---- Long-term caching for static assets (fixes "efficient cache lifetimes") ----
+# These files should have new filenames/version params when updated,
+# so it's safe to cache them for a full year.
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/manifest.json
+  Cache-Control: public, max-age=86400
+
+# ---- HTML pages: short cache so rate updates / content edits show quickly ----
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate

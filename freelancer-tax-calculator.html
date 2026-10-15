@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="last-modified" content="2026-07-23">
+<meta name="robots" content="index, follow">
+<meta name="language" content="en">
+<meta name="author" content="Muhammad Faheem">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#060b14">
+
+<title>Freelancer Tax Calculator Pakistan – FBR IT Export Tax Rate</title>
+<meta name="description" content="Calculate FBR income tax on freelance earnings and IT export income in Pakistan. Check reduced tax rates for PSEB registered and non-registered freelancers.">
+<meta name="keywords" content="Freelancer tax calculator Pakistan, FBR IT export tax rate, freelancer tax rate 2026, PSEB registration tax benefit">
+<link rel="canonical" href="https://chatgpt.com/calculators/freelancer-tax-calculator.html">
+
+<link rel="stylesheet" href="../style.css?v=10">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=G-VEK9X4C984" defer></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VEK9X4C984');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the withholding tax rate for freelancers in Pakistan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Freelancers and IT exporters registered with the Pakistan Software Export Board (PSEB) benefit from a reduced 0.25% withholding tax rate on export proceeds. Non-registered freelancers or general service exporters are typically subject to a 1% rate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do freelancers in Pakistan need to register with PSEB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PSEB registration is not mandatory, but it unlocks the reduced 0.25% tax rate on IT and IT-enabled export income, along with other export facilitation benefits, making it worthwhile for freelancers with consistent foreign income."
+      }
+    }
+  ]
+}
+</script>
+<style>
+.conv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) {
+  .conv-row {
+    grid-template-columns: 1fr;
+  }
+}
+.faq-q {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-a {
+  display: none;
+  padding: 10px 0;
+  color: var(--text2, #aaa);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-a {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="hero-badge">💻 Freelance &amp; IT Export Tax Tool</div>
+    <h1>Freelancer Tax Calculator Pakistan</h1>
+    <p class="hero-sub">Estimate your FBR income withholding tax on foreign income remittances, Fiverr, Upwork, and IT exports.</p>
+  </section>
+
+  <div class="converter-section">
+    <div class="converter-card" style="max-width: 650px; margin: 0 auto;">
+      <div class="converter-title">💻 Freelance Income Tax Calculator</div>
+
+      <div class="conv-row">
+        <div>
+          <label class="field-label" for="usdIncome">Monthly Foreign Income ($ USD)</label>
+          <input type="number" id="usdIncome" value="1000" min="0" oninput="calcFreelancerTax()">
+        </div>
+        <div>
+          <label class="field-label" for="exchangeRate">Exchange Rate (USD to PKR)</label>
+          <input type="number" id="exchangeRate" value="" min="0" oninput="calcFreelancerTax()" placeholder="Fetching live rate…">
+        </div>
+      </div>
+      <p style="font-size: 11px; color: var(--text3, #888); margin: 6px 0 14px;">Rate is pre-filled from live market data — edit it if your bank or platform quotes a different rate.</p>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="psebStatus">PSEB / IT Export Registration Status</label>
+        <select id="psebStatus" onchange="calcFreelancerTax()">
+          <option value="registered">Registered with PSEB (0.25% Reduced Tax Rate)</option>
+          <option value="unregistered">Not Registered / Non-IT Services (1% Tax Rate)</option>
+        </select>
+      </div>
+
+      <div class="result-box" style="margin-top: 20px;">
+        <div class="result-note">Gross Monthly Earnings in PKR</div>
+        <div class="result-amount" id="grossPkr" style="font-size: 1.3rem; margin-bottom: 8px;">—</div>
+
+        <div class="result-note">Deducted FBR Withholding Tax</div>
+        <div class="result-amount" id="taxDeducted" style="font-size: 1.3rem; color: #f44336; margin-bottom: 8px;">—</div>
+
+        <div class="result-note">Net Take-Home Monthly Amount</div>
+        <div class="result-amount" id="netTakeHome" style="color: #4caf50;">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box">
+      <h2>How Freelancer Withholding Tax Works in Pakistan</h2>
+      <p>When a freelancer or IT exporter in Pakistan receives payment from abroad — whether through Payoneer, Wise, a direct bank wire, or a marketplace like Upwork or Fiverr routed through a bank — the receiving bank deducts a small withholding tax at the point of conversion, under Section 154A of the Income Tax Ordinance covering IT and IT-enabled export income.</p>
+      <p>The rate applied depends on registration status with the <strong>Pakistan Software Export Board (PSEB)</strong>:</p>
+      <ul class="ic-list">
+        <li><strong>0.25% rate:</strong> Applies to freelancers and companies registered with PSEB as IT or IT-enabled services (ITeS) exporters.</li>
+        <li><strong>1% rate:</strong> Applies to general service exporters or freelancers who have not registered with PSEB.</li>
+      </ul>
+      <p>This withholding tax is typically treated as a final tax on that export income for many freelancers, meaning no further income tax is usually due on that specific foreign-source freelance income beyond the amount already withheld — though overall tax obligations still depend on a freelancer's complete financial picture, including any other income sources.</p>
+
+      <h3>Is PSEB Registration Worth It?</h3>
+      <p>For a freelancer earning a modest, occasional amount from abroad, the tax rate difference (0.25% vs 1%) may only amount to a few thousand rupees a month. But for someone earning consistently — say $2,000-3,000 monthly — that gap compounds into a meaningful annual saving, and PSEB registration also opens access to other export facilitation schemes. Registration is done directly through PSEB's portal and generally requires basic business or freelancer documentation.</p>
+
+      <h3>A Note on Accuracy</h3>
+      <p>This calculator gives an estimate based on the withholding tax rate alone. Actual bank deductions can vary slightly depending on the specific payment channel and any bank service charges applied separately from the tax. For an exact figure, check your bank or payment provider's transaction breakdown, or consult a tax advisor for your specific situation.</p>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="info-card">
+      <div class="ic-header">
+        <div class="ic-icon sh-purple">ℹ️</div>
+        <h3 class="ic-title">Pakistan Freelancer Tax Rules — Quick Reference</h3>
+      </div>
+      <div class="ic-body">
+        <ul class="ic-list">
+          <li><strong>0.25% Tax Rate:</strong> Applicable for IT &amp; IT-enabled services (ITeS) exporters registered with Pakistan Software Export Board (PSEB).</li>
+          <li><strong>1.0% Tax Rate:</strong> Applicable for non-registered IT exporters or general service freelancers receiving proceeds through banking channels / foreign remittance.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-gold" aria-hidden="true">❓</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the withholding tax rate for freelancers in Pakistan? <span class="faq-icon">+</span></div>
+        <div class="faq-a">PSEB-registered IT exporters pay a reduced 0.25% withholding tax. Non-registered freelancers or general service exporters are typically subject to a 1% rate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do freelancers in Pakistan need to register with PSEB? <span class="faq-icon">+</span></div>
+        <div class="faq-a">It isn't mandatory, but PSEB registration unlocks the reduced 0.25% tax rate on IT and IT-enabled export income along with other export facilitation benefits.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="../calculators/">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://chatgpt.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> This calculator gives a general estimate based on published withholding tax rates and does not constitute tax advice. Consult FBR guidance or a qualified tax advisor for your specific filing obligations.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+function calcFreelancerTax() {
+  const usd = parseFloat(document.getElementById('usdIncome').value) || 0;
+  const rate = parseFloat(document.getElementById('exchangeRate').value) || 0;
+  const pseb = document.getElementById('psebStatus').value;
+
+  const grossPkr = usd * rate;
+  const taxRate = (pseb === 'registered') ? 0.0025 : 0.01;
+  const taxAmount = grossPkr * taxRate;
+  const netAmount = grossPkr - taxAmount;
+
+  document.getElementById('grossPkr').innerText = 'Rs. ' + Math.round(grossPkr).toLocaleString('en-PK');
+  document.getElementById('taxDeducted').innerText = 'Rs. ' + Math.round(taxAmount).toLocaleString('en-PK');
+  document.getElementById('netTakeHome').innerText = 'Rs. ' + Math.round(netAmount).toLocaleString('en-PK');
+}
+
+async function loadLiveRateForTaxCalc() {
+  const rateInput = document.getElementById('exchangeRate');
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/USD');
+    const data = await res.json();
+    if (data?.rates?.PKR) {
+      rateInput.value = data.rates.PKR.toFixed(2);
+    } else {
+      rateInput.value = '278.50';
+    }
+  } catch (e) {
+    rateInput.value = '278.50';
+  }
+  calcFreelancerTax();
+}
+
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+  const icon = element.querySelector('.faq-icon');
+  if (icon) {
+    icon.textContent = item.classList.contains('active') ? '-' : '+';
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadLiveRateForTaxCalc);
+} else {
+  loadLiveRateForTaxCalc();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Muhammad Faheem">
+<title>Pakistan Salary Income Tax Calculator – FBR Salary Slabs</title>
+<meta name="description" content="Calculate your monthly income tax on salary in Pakistan based on FBR income tax slabs. See your estimated take-home pay instantly.">
+<link rel="canonical" href="https://www.thecurrencypro.com/calculators/salary-tax-calculator.html">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="../style.css?v=10">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do FBR salary tax slabs change every year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Salary tax slabs in Pakistan are typically revised in the annual Federal Budget, so the applicable slabs and rates can shift from one fiscal year to the next. Always confirm the current year's slabs with FBR before relying on a calculation for filing purposes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator accurate for all types of income?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This calculator estimates tax on salary income specifically, using standard salary slabs. It does not account for other income sources, tax credits, or deductions that may apply to your specific tax return."
+      }
+    }
+  ]
+}
+</script>
+<style>
+.conv-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+.faq-q {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-a {
+  display: none;
+  padding: 10px 0;
+  color: var(--text2, #aaa);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-a {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: clamp(22px, 4vw, 32px); margin-bottom: 6px;">Pakistan Salary Tax Calculator</h1>
+    <p style="font-size: 12px; color: var(--text3, #888); margin-bottom: 4px;">Based on current published FBR salary income tax slabs — always verify against the latest Federal Budget for filing purposes.</p>
+    <p style="color: var(--text2, #aaa); font-size: 14px; margin-bottom: 24px;">Calculate your estimated monthly income tax and take-home pay based on FBR salary slabs.</p>
+
+    <div class="converter-card">
+      <div>
+        <label class="field-label" for="monthlySalary">Monthly Gross Salary (PKR)</label>
+        <input type="number" id="monthlySalary" placeholder="e.g. 150000" value="150000" oninput="calcTax()">
+      </div>
+      <button class="btn-convert" style="width:100%; margin-top:20px;" onclick="calcTax()">Calculate Tax</button>
+      <div class="result-box" style="margin-top: 20px;">
+        <div class="result-amount" id="taxResult">Click Calculate</div>
+        <div class="result-note" id="taxTakeHome">Estimated take-home income</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box" style="margin-top: 32px;">
+      <h2>How Slab-Based Salary Tax Works</h2>
+      <p>Pakistan's salary tax system is progressive and slab-based — meaning different portions of your annual income are taxed at different rates, rather than your entire salary being taxed at one flat percentage. Only the income that falls within a given slab is taxed at that slab's rate; income below it was already taxed at the lower rate(s) that applied to those earlier slabs.</p>
+      <p>This is a common point of confusion: moving into a higher tax slab does not mean your <em>entire</em> salary suddenly gets taxed at the higher rate — only the portion of income that falls above the previous slab's threshold does.</p>
+
+      <h3>Why Slabs Change Almost Every Year</h3>
+      <p>Salary tax slabs and rates are typically revised in Pakistan's annual Federal Budget, announced around June each year, and take effect for the new fiscal year. Because of this, a slab structure that was accurate last year may already be outdated — always cross-check against the current fiscal year's officially notified slabs from FBR before using a calculation for actual filing or payroll purposes.</p>
+
+      <h3>What This Calculator Does and Doesn't Cover</h3>
+      <p>This tool estimates tax purely on salary income using standard slabs. It does not account for tax credits (such as those for certain investments or donations), other income sources that might push you into a different bracket, or employer-specific benefits that may be taxed differently. For an exact figure relevant to your tax return, a payroll department or tax consultant familiar with your complete financial picture is the more reliable source.</p>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-purple" aria-hidden="true">❓</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do FBR salary tax slabs change every year? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Yes, they are typically revised in the annual Federal Budget, so slabs and rates can shift from one fiscal year to the next.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is this calculator accurate for all types of income? <span class="faq-icon">+</span></div>
+        <div class="faq-a">It estimates tax on salary income using standard slabs only, and does not account for other income sources, credits, or deductions specific to your return.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="../calculators/">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> Tax slabs change annually. This estimate does not constitute tax advice — verify current rates with FBR or a tax consultant before filing.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+function calcTax() {
+  const monthly = parseFloat(document.getElementById('monthlySalary').value) || 0;
+  const yearly = monthly * 12;
+  let taxYearly = 0;
+
+  if (yearly <= 600000) {
+    taxYearly = 0;
+  } else if (yearly <= 1200000) {
+    taxYearly = (yearly - 600000) * 0.05;
+  } else if (yearly <= 2200000) {
+    taxYearly = 30000 + (yearly - 1200000) * 0.15;
+  } else if (yearly <= 3200000) {
+    taxYearly = 180000 + (yearly - 2200000) * 0.25;
+  } else {
+    taxYearly = 430000 + (yearly - 3200000) * 0.35;
+  }
+
+  const taxMonthly = taxYearly / 12;
+  const takeHome = monthly - taxMonthly;
+
+  document.getElementById('taxResult').innerText = "Monthly Tax: Rs. " + Math.round(taxMonthly).toLocaleString('en-PK');
+  document.getElementById('taxTakeHome').innerText = "Net Monthly Take-Home: Rs. " + Math.round(takeHome).toLocaleString('en-PK');
+}
+
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+  const icon = element.querySelector('.faq-icon');
+  if (icon) {
+    icon.textContent = item.classList.contains('active') ? '-' : '+';
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calcTax);
+} else {
+  calcTax();
+}
+</script>
+</body>
+</html>

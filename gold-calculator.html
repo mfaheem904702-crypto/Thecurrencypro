@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="last-modified" content="2026-07-23">
+<meta name="robots" content="index, follow">
+<meta name="language" content="en">
+<meta name="author" content="Muhammad Faheem">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#060b14">
+
+<title>Gold Price Calculator – Calculate 24K, 22K, 21K & 18K Gold in Pakistan</title>
+<meta name="description" content="Calculate gold prices per Tola, Masha, and Gram in Pakistan. Convert 24K gold rates into 22K, 21K, and 18K values easily.">
+<meta name="keywords" content="Gold calculator Pakistan, gold price per tola, 24K to 22K gold converter, gold price per gram Pakistan">
+<link rel="canonical" href="https://www.thecurrencypro.com/calculators/gold-calculator.html">
+
+<link rel="stylesheet" href="../style.css?v=10">
+<link rel="icon" href="../logo-small.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+
+<script src="https://www.googletagmanager.com/gtag/js?id=G-VEK9X4C984" defer></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VEK9X4C984');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many grams are in one Tola of gold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One Tola equals 11.6638 grams, which also equals 12 Mashas — this is the traditional weight unit used in Pakistan's Sarafa gold market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I convert 24K gold price to 22K?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Divide the 24K rate by 24, then multiply by 22. This reflects that 22K gold is 22 parts pure gold out of 24, with the remainder made up of other metals for durability."
+      }
+    }
+  ]
+}
+</script>
+<style>
+.conv-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 15px;
+}
+@media (max-width: 600px) {
+  .conv-row {
+    grid-template-columns: 1fr;
+  }
+}
+.faq-q {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.faq-a {
+  display: none;
+  padding: 10px 0;
+  color: var(--text2, #aaa);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.faq-item.active .faq-a {
+  display: block;
+}
+.ic-list {
+  padding-left: 20px;
+  line-height: 1.7;
+  color: var(--text2, #d1d5db);
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="../" class="logo" aria-label="TheCurrencyPro Home">
+      <img src="../logo-small.webp" alt="TheCurrencyPro Logo" width="38" height="38">
+      <span class="logo-text">TheCurrencyPro</span>
+    </a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="../">Home</a>
+      <a href="../currency-rates.html">Rates</a>
+      <a href="../forex.html">Forex</a>
+      <a href="../gold.html">Gold</a>
+      <a href="../calculators/">Calculators</a>
+      <a href="../blog/">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-theme" onclick="toggleMode()" title="Toggle Theme" aria-label="Toggle Dark Mode">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <section class="hero">
+    <div class="hero-badge">🪙 Sarafa Market Tool</div>
+    <h1>Gold Price Calculator Pakistan</h1>
+    <p class="hero-sub">Calculate the exact price of gold according to weight (Tola, Gram) and Purity (24K, 22K, 21K, 18K).</p>
+  </section>
+
+  <div class="converter-section">
+    <div class="converter-card" style="max-width: 650px; margin: 0 auto;">
+      <div class="converter-title">🪙 Gold Price Calculator</div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="ratePerTola">24K Gold Rate Per Tola (PKR)</label>
+        <input type="number" id="ratePerTola" value="242500" placeholder="Enter today's 24K rate per Tola" min="0" oninput="calcGold()">
+      </div>
+      <p style="font-size: 11px; color: var(--text3, #888); margin: -6px 0 14px;">
+        Enter today's Sarafa market rate — gold prices change daily, so check the
+        <a href="../gold.html" style="color: var(--cyan, #00bcd4);">live Gold Rates page</a> before calculating.
+      </p>
+
+      <div class="conv-row">
+        <div>
+          <label class="field-label" for="weight">Weight Amount</label>
+          <input type="number" id="weight" value="1" min="0" step="0.01" oninput="calcGold()">
+        </div>
+        <div>
+          <label class="field-label" for="unit">Weight Unit</label>
+          <select id="unit" onchange="calcGold()">
+            <option value="tola">Tola</option>
+            <option value="gram">Gram</option>
+            <option value="masha">Masha</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 15px;">
+        <label class="field-label" for="purity">Gold Purity (Karat)</label>
+        <select id="purity" onchange="calcGold()">
+          <option value="24">24K (99.9% Pure)</option>
+          <option value="22" selected>22K (91.6% Pure - Jewellery Standard)</option>
+          <option value="21">21K (87.5% Pure)</option>
+          <option value="18">18K (75.0% Pure)</option>
+        </select>
+      </div>
+
+      <div class="result-box" style="margin-top: 20px;">
+        <div class="result-note">Estimated Total Gold Price</div>
+        <div class="result-amount" id="goldResult" style="color: #f1c40f;">Rs. 222,292</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section" style="max-width: 800px; margin: 0 auto;">
+    <div class="content-box">
+      <h2>Understanding Gold Purity and Sarafa Weight Units</h2>
+      <p>Gold sold in Pakistan is quoted mainly by two things: the weight unit (Tola, Gram, or occasionally Masha) and the purity or karat (24K, 22K, 21K, or 18K). Getting a quick, accurate estimate means understanding both.</p>
+
+      <h3>Weight Units Explained</h3>
+      <ul class="ic-list">
+        <li><strong>1 Tola</strong> = 12 Mashas = 11.6638 Grams — the traditional unit still used by most Sarafa Bazaar dealers.</li>
+        <li><strong>1 Masha</strong> = 0.972 Grams — a smaller traditional unit, sometimes used for gold ornaments.</li>
+        <li><strong>1 Gram</strong> — the international standard unit, increasingly used alongside Tola in city jewellery markets.</li>
+      </ul>
+
+      <h3>Why Purity Changes the Price</h3>
+      <p>24K gold is considered 99.9% pure and is the benchmark rate quoted daily in the market. Jewellery is rarely made from 24K gold alone because pure gold is too soft for everyday wear — it's typically alloyed with other metals to create 22K, 21K, or 18K gold, each with progressively less pure gold content and more of the alloy metal.</p>
+      <p>The conversion formula is straightforward: <strong>(24K Rate ÷ 24) × Target Karat</strong>. For example, to find the 22K rate from a 24K rate, divide by 24 and multiply by 22 — this reflects that 22K gold contains 22 parts gold out of 24 total parts by weight.</p>
+
+      <h3>A Practical Tip Before You Buy or Sell</h3>
+      <p>Sarafa market rates can shift more than once within a single trading day depending on international gold price movement and the Dollar-Rupee exchange rate. Before a significant purchase or sale, it's worth checking the rate again at the jeweller rather than relying on a rate checked earlier in the day — and remembering that jewellers typically add making charges on top of the raw gold value, which this calculator does not include.</p>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="info-card">
+      <div class="ic-header">
+        <div class="ic-icon sh-gold">⚖️</div>
+        <h3 class="ic-title">Gold Measurement Units in Pakistan</h3>
+      </div>
+      <div class="ic-body">
+        <p>In Pakistan, gold is primarily traded using traditional Sarafa units:</p>
+        <ul class="ic-list">
+          <li><strong>1 Tola</strong> = 12 Mashas = 11.6638 Grams</li>
+          <li><strong>1 Masha</strong> = 0.972 Grams</li>
+          <li><strong>22K Conversion Formula:</strong> (24K Rate ÷ 24) × 22</li>
+        </ul>
+        <a href="../gold.html" style="color: var(--cyan, #00bcd4); text-decoration:underline; font-weight:600; display:inline-block; margin-top:10px;">Check Today's Live Sarafa Gold Rates →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-wrap" style="max-width: 800px; margin: 0 auto;">
+    <div class="section-heading">
+      <div class="sh-icon sh-gold" aria-hidden="true">❓</div>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How many grams are in one Tola of gold? <span class="faq-icon">+</span></div>
+        <div class="faq-a">One Tola equals 11.6638 grams, which also equals 12 Mashas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I convert 24K gold price to 22K? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Divide the 24K rate by 24, then multiply by 22 — this accounts for 22K gold being 22 parts pure gold out of 24.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-lg">TheCurrencyPro</div>
+        <p>TheCurrencyPro delivers real-time currency exchange rates, gold rates, financial calculators, and forex insights for users worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="../">Home</a>
+        <a href="../currency-rates.html">Currency Rates</a>
+        <a href="../gold.html">Gold Rates</a>
+        <a href="../calculators/">Calculators</a>
+        <a href="../freelancers.html">Freelancers</a>
+      </div>
+      <div class="footer-col">
+        <h4>About & Policies</h4>
+        <a href="../about.html">About Us</a>
+        <a href="../contact.html">Contact Us</a>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="https://www.facebook.com/profile.php?id=61590336407515" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.linkedin.com/in/muhammad-faheem-56b349280/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/MuhammadFa9p" target="_blank" rel="noopener">X (Twitter)</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-note">
+        <p><strong>Disclaimer:</strong> Gold rates entered are user-provided estimates, not live feeds. Always verify with your local Sarafa dealer before a transaction.</p>
+      </div>
+      <div class="copyright">© 2026 TheCurrencyPro · All Rights Reserved</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js?v=9" defer></script>
+<script>
+function calcGold() {
+  const rate24kTola = parseFloat(document.getElementById('ratePerTola').value) || 0;
+  const weight = parseFloat(document.getElementById('weight').value) || 0;
+  const unit = document.getElementById('unit').value;
+  const purity = parseFloat(document.getElementById('purity').value) || 24;
+
+  let weightInTola = weight;
+  if (unit === 'gram') {
+    weightInTola = weight / 11.6638;
+  } else if (unit === 'masha') {
+    weightInTola = weight / 12;
+  }
+
+  const purityFactor = purity / 24;
+  const totalPrice = weightInTola * rate24kTola * purityFactor;
+
+  document.getElementById('goldResult').innerText = 'Rs. ' + Math.round(totalPrice).toLocaleString('en-PK');
+}
+
+function toggleFaq(element) {
+  const item = element.parentElement;
+  item.classList.toggle('active');
+  const icon = element.querySelector('.faq-icon');
+  if (icon) {
+    icon.textContent = item.classList.contains('active') ? '-' : '+';
+  }
+}
+
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calcGold);
+} else {
+  calcGold();
+}
+</script>
+</body>
+</html>

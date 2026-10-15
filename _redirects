@@ -1,0 +1,27 @@
+# 1. Non-WWW to WWW Domain Redirection Rules
+http://thecurrencypro.com/*    https://www.thecurrencypro.com/:splat 301!
+https://thecurrencypro.com/*   https://www.thecurrencypro.com/:splat 301!
+
+# 2. Fix Crawled Not Indexed URLs (Old & Non-.html Extensions)
+/economy                                                   /                                                           301
+/blog/freelancer-currency-conversion-guide                 /blog/freelancer-currency-conversion-guide.html            301
+/blog/sar-to-pkr.html                                      /sar-to-pkr.html                                            301
+
+# 3. Clean URLs to .html Pages
+/gold                          /gold.html                           301
+/currency-rates                /currency-rates.html                 301
+/contact                       /contact.html                        301
+/corrections-policy            /corrections-policy.html             301
+/editorial-policy              /editorial-policy.html               301
+/fact-checking-policy          /fact-checking-policy.html           301
+/cookie-policy                 /cookie-policy.html                  301
+
+# 4. Deleted Blogs Redirection
+/blog/aed-to-pkr               /blog/                               301
+/blog/sar-to-pkr               /blog/                               301
+
+# 5. Search Console 404 Errors Fix
+/blog/usd-to-pkr-prediction.html                           /blog/                                                      301
+/our-data-sources.html                                     /about.html                                                 301
+/blog/wise-vs-payoneer-bank-transfer-freelancer-guide.html  /blog/wise-vs-payoneer-vs-bank-transfer-freelancer-guide.html 301
+/blog/safara-market-rate-vs-online-gold-rate.html         /blog/sarafa-market-rate-vs-online-gold-rate.html          301
